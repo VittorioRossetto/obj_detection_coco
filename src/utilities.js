@@ -1,3 +1,5 @@
+
+//unction that draws rectangle around detected objects
 export const drawRect = (prediction, ctx) =>{
     const [x, y, width, height] = prediction['bbox'];
     const text = prediction['class'];
@@ -13,6 +15,7 @@ export const drawRect = (prediction, ctx) =>{
     ctx.stroke()
 }
 
+//function that draws rectangle of the area in a different color
 export const drawArea = (x, y, width, height, ctx) => {
     const color = 'yellow'
     ctx.strokeStyle = color

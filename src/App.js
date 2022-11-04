@@ -1,16 +1,16 @@
 // Import dependencies
-import React, { useRef, useState, useEffect } from "react";
 //import * as tf from "@tensorflow/tfjs";
+import React, { useRef, /*useState,*/ useEffect } from "react";
 import * as cocossd from "@tensorflow-models/coco-ssd"
 import Webcam from "react-webcam";
 import "./App.css";
-import { drawRect } from "./utilities";
-import { drawArea } from "./utilities"
+import { drawRect, drawArea } from "./utilities";
 
 function App() {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
 
+  //Hardcoded area position and dimensions
   const AreaXL = 240;
   const AreaXR = 540;
   const AreaYB = 130;
@@ -37,7 +37,6 @@ function App() {
       const video = webcamRef.current.video;
       const videoWidth = webcamRef.current.video.videoWidth;
       const videoHeight = webcamRef.current.video.videoHeight;
-      //console.log(videoWidth);
       // Set video width
       webcamRef.current.video.width = videoWidth;
       webcamRef.current.video.height = videoHeight;
