@@ -1,12 +1,9 @@
 // Import dependencies
 import React, { useRef, useState, useEffect } from "react";
-import * as tf from "@tensorflow/tfjs";
-// 1. TODO - Import required model here
-// e.g. import * as tfmodel from "@tensorflow-models/tfmodel";
+//import * as tf from "@tensorflow/tfjs";
 import * as cocossd from "@tensorflow-models/coco-ssd"
 import Webcam from "react-webcam";
 import "./App.css";
-// 2. TODO - Import drawing utility here
 import { drawRect } from "./utilities";
 import { drawArea } from "./utilities"
 
@@ -21,11 +18,9 @@ function App() {
 
   // Main function
   const runCoco = async () => {
-    // 3. TODO - Load network 
-    // e.g. const net = await cocossd.load();
     const net = await cocossd.load();
     
-    //  Loop and detect hands
+    //  Loop and detect
     setInterval(() => {
       detect(net);
     }, 10);
@@ -51,12 +46,15 @@ function App() {
       canvasRef.current.width = videoWidth;
       canvasRef.current.height = videoHeight;
 
+      
       const ctx = canvasRef.current.getContext("2d");
+      // Draw the area in wich the detection will be "valid"
       drawArea(AreaXL, AreaYB, (AreaXR - AreaXL), (AreaYT - AreaYB), ctx);
       
       const obj =await net.detect(video);
       console.log(obj);
 
+      //check if detected objects are in the aarea, and if so draws the rectangle
       obj.forEach(detected => {
         if(detected.bbox[0] > AreaXL && 
           (detected.bbox[0] + detected.bbox[2]) < AreaXR &&

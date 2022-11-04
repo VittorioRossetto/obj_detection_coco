@@ -1,5 +1,4 @@
 export const drawRect = (prediction, ctx) =>{
-    //detections.forEach(prediction => {
     const [x, y, width, height] = prediction['bbox'];
     const text = prediction['class'];
 
@@ -12,7 +11,6 @@ export const drawRect = (prediction, ctx) =>{
     ctx.fillText(text, x, y)
     ctx.rect(x, y, width, height)
     ctx.stroke()
-    //});
 }
 
 export const drawArea = (x, y, width, height, ctx) => {
