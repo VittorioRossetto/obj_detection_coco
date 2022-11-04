@@ -1,5 +1,5 @@
 // Import dependencies
-//import * as tf from "@tensorflow/tfjs";
+import * as tf from "@tensorflow/tfjs";
 import React, { useRef, /*useState,*/ useEffect } from "react";
 import * as cocossd from "@tensorflow-models/coco-ssd"
 import Webcam from "react-webcam";
